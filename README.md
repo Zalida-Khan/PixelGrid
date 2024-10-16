@@ -1,17 +1,9 @@
 # COMP-3170 Group Project 
-<<<<<<< HEAD
-## To use the code on your locally, do:
-- npx degit Zalida-Khan/PixelGrid/tree/main
-=======
->>>>>>> main
 ## Image Search Web-App
 ## Developed by 
 - Celine
 - Jillian 
 - Kiana
-<<<<<<< HEAD
-- Zalida
-=======
 - Zalida
 ## To collaborate with, do:
 - cd desktop
@@ -35,4 +27,3 @@
 - npx digit Zalida-Khan/PixelGrid
 
 
->>>>>>> main
