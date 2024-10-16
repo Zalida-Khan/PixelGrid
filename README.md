@@ -1,8 +1,29 @@
-# React + Vite
+# COMP-3170 Group Project 
+## Image Search Web-App
+## Developed by 
+- Celine
+- Jillian 
+- Kiana
+- Zalida
+## To collaborate with, do:
+- cd desktop
+- git clone https://github.com/Zalida-Khan/PixelGrid.git
+- cd PixelGrid
+- git checkout <yournamebranch>
+- add files or code
+- git add . 
+- git commit -m "blahblahblah..."
+- git push
+## To merge your branch with main, do:
+- git checkout main
+- git pull origin main
+- git merge <yournamebranch>
+- git commit
+- git push origin main
+## To use our code on your local desktop, do:
+- cd desktop
+- create a folder and name it
+- cd <foldername>
+- npx digit Zalida-Khan/PixelGrid
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
