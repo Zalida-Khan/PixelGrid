@@ -56,3 +56,37 @@ h1 {
     color: #fff;
     height: 20px;
 }
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+  }
+  
+  .close {
+    position: absolute;
+    top: -3px;
+    right: 5px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+
+  .modal-content img {
+    margin-top: 20px; 
+  }
+  
+  

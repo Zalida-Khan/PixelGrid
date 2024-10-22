@@ -1,0 +1,21 @@
+/* MoreResultsBtn.css */
+.more-results-btn {
+    width: 185px;
+    height: 40px;
+    background-color: gray;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px; 
+    cursor: pointer;
+    text-align: center;
+    
+    display: block;
+    margin: 40px auto; 
+    
+  }
+  
+  .more-results-btn:hover {
+    background-color: lightgray; 
+  }
+  
