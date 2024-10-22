@@ -1,8 +1,15 @@
 .image-List{
-    columns:6 200px;
-    column-gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 img{
-    width: 100%;
-    margin-bottom: 10px;
+    border-radius: 15px;
+    width: 200px;
+    height: 300px;
+    cursor: pointer;
+    object-fit: cover;
+    transition: transform 0.3s;
 }
+

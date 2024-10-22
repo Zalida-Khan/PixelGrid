@@ -29,7 +29,7 @@ function SearchBar({onSubmit}){
     <form onSubmit={handelFormSubmit}>
       <FontAwesomeIcon icon={faMagnifyingGlass} />
       <input  className='input' value={term} onChange={handleChange}/>
-      <FontAwesomeIcon icon={faFileImage} />
+      <FontAwesomeIcon className='file' icon={faFileImage} />
     </form>
     </div>
     </>
