@@ -225,11 +225,12 @@ input[type="search"] {
   }
 
   &:has(> input[type="checkbox"]:checked) > label::before {
-    
+    /* change border color when checked */
     border-color: green;
   }
 
   input[type="checkbox"]:checked + label::after {
+    /* show marker and change its color */
     opacity: 1;
     border-color: green;
   }
@@ -239,7 +240,7 @@ input[type="search"] {
   }
 }
 
-.rbox { 
+.rbox { /* radio button control */
   margin: .5em 0;
   font-size: 20px;
   min-height: 1em;

@@ -176,11 +176,11 @@ input[type="search"] {
 
 
 
-.cbox { 
+.cbox { /*checkbox control group (input + label) */
   margin: .5em 0;
   font-size: 20px;
   min-height: 1em;
-  padding-left: 1em; 
+  padding-left: 1em; /* create space for the checkbox */
   position: relative;
 
   label::before,
@@ -190,26 +190,26 @@ input[type="search"] {
   }
 
   label::before,
-  input[type="checkbox"] { 
+  input[type="checkbox"] { /* customize checkbox size */
     height: 1em;
     left: 0;
     top: 0;
     width: 1em;
   }
 
-  input[type="checkbox"] {
+  input[type="checkbox"] { /* hide native checkbox look-and-feel */
     margin: 0;
     opacity: 0;
     z-index: 1;
   }
 
-  label::before { 
+  label::before { /* custom checkbox look-and-feel */
     background: transparent;
     border: .1em solid currentcolor;
     content: "";
   }
 
-  label::after {
+  label::after { /* custom checkbox marker */
     content: "";
     border: solid;
     background: transparent;
@@ -221,15 +221,16 @@ input[type="search"] {
     top: .3em;
     transform: rotate(-45deg);
     position: absolute;
-    opacity: 0; 
+    opacity: 0; /* hidden when not checked */
   }
 
   &:has(> input[type="checkbox"]:checked) > label::before {
-    
+    /* change border color when checked */
     border-color: green;
   }
 
   input[type="checkbox"]:checked + label::after {
+    /* show marker and change its color */
     opacity: 1;
     border-color: green;
   }
@@ -239,7 +240,7 @@ input[type="search"] {
   }
 }
 
-.rbox { 
+.rbox { /* radio button control */
   margin: .5em 0;
   font-size: 20px;
   min-height: 1em;
