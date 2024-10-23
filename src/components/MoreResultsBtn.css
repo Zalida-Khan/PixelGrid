@@ -1,4 +1,11 @@
-/* MoreResultsBtn.css */
+.container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  padding: 40px 0; 
+  padding-top: 0px;
+}
+
 .more-results-btn {
     width: 185px;
     height: 40px;
@@ -9,10 +16,9 @@
     border-radius: 30px; 
     cursor: pointer;
     text-align: center;
-    
     display: block;
-    margin: 40px auto; 
-    
+    margin: 0 auto; 
+    margin-top: 50px;
   }
   
   .more-results-btn:hover {

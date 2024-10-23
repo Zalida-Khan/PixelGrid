@@ -1,11 +1,13 @@
 import React from 'react';
-import './MoreResultsBtn.css'; // Import the CSS file
+import './MoreResultsBtn.css';
 
-const MoreResultsBtn = () => {
+const MoreResultsBtn = ({ onClick }) => {
   return (
-    <button className="more-results-btn">
-      More Results
+    <div className="container">
+    <button className="more-results-btn" onClick={onClick}>
+      Load More Results
     </button>
+    </div>
   );
 };
 
