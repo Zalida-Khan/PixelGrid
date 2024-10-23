@@ -1,0 +1,15 @@
+.image-List{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+img{
+    border-radius: 15px;
+    width: 200px;
+    height: 300px;
+    cursor: pointer;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
