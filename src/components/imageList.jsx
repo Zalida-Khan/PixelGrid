@@ -1,5 +1,5 @@
 import React from 'react';
-import '/src/components/ImageList.css';
+import '../App.css';
 
 function ImageList({ images }) {
   const renderedImages = images.map((image) => (
