@@ -1,7 +1,7 @@
 import { useState } from "react";
 import searchImages from "./api";
 import SearchBar from "./components/searchBar";
-import ImageList from "./components/imageList";
+import ImageList from './components/imageList';
 import Pagination from "./components/Pagination";
 import './App.css';
 
