@@ -1,10 +1,9 @@
 import axios from "axios";
-import React from "react";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API_KEY;
 const API_URL = "https://api.unsplash.com/search/photos";
 
-const SearchImages = async (term) => {
+const searchImages = async (term, page = 1, perPage = 30) => {
   try {
     const response = await axios.get(API_URL, {
       headers: {
@@ -12,13 +11,18 @@ const SearchImages = async (term) => {
       },
       params: {
         query: term,
+        page,
+        per_page: perPage,
       },
     });
-    return response.data.results;
+    return {
+      images: response.data.results,
+      totalPages: Math.ceil(response.data.total / perPage),
+    };
   } catch (error) {
     console.error("Error fetching images:", error);
-    return [];
+    return { images: [], totalPages: 0 };
   }
 };
 
-export default SearchImages;
+export default searchImages;

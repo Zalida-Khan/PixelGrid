@@ -1,15 +1,21 @@
-.image-List{
+.image-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
-}
-img{
-    border-radius: 15px;
-    width: 200px;
-    height: 300px;
-    cursor: pointer;
-    object-fit: cover;
-    transition: transform 0.3s;
+    gap: 25px;
+    padding: 25px;
 }
 
+.image-item img {
+    width: 210px;
+    height: 315px;
+    border-radius: 12px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-item img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
