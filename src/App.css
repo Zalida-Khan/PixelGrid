@@ -206,3 +206,77 @@ body {
   cursor: pointer;
 }
 
+.image-detail {
+  display: flex;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+.image-detail img {
+  width: 50%;
+  height: 400px;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 8px;
+  margin-right: 40px;
+}
+
+.image-detail .content {
+  width: 70%;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-bottom: 15px;
+}
+
+.button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.button svg {
+  display: flex;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  justify-content: center;
+}
+
+.button svg:hover {
+  color: var(--hover-background);
+  font-size: 1.2rem;
+}
+
+.image-detail h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 10px 0;
+  margin-right: 10px;
+}
+
+.image-detail p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-right: 10px;
+  color: #555;
+}

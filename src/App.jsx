@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import searchImages from "./api/api";
 import SearchBar from "./components/searchBar";
-import ImageList from './components/imageList';
+import ImageList from "./components/imageList";
 import Pagination from "./components/Pagination";
+import ImageDetailPage from "./components/ImageDetails";
 import './App.css';
 
 function App() {
@@ -33,17 +35,28 @@ function App() {
   };
 
   return (
-    <div>
-      <SearchBar onSearch={handleSearch} />
-      <ImageList images={images} />
-      {images.length > 0 && (
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        <SearchBar onSearch={handleSearch} />
+        <Routes>
+          {/* Image Gallery */}
+          <Route path="/" element={<ImageList images={images} />} />
+
+          {/* Image Detail Page */}
+          <Route
+            path="/image/:id"
+            element={<ImageDetailPage images={images} />}
+          />
+        </Routes>
+        {images.length > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
+    </Router>
   );
 }
 
