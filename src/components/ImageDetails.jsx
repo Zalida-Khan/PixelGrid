@@ -1,7 +1,7 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import '../App.css';
-import { FaThumbsUp, FaDownload, FaBookmark } from 'react-icons/fa';
+import React from "react";
+import { useParams } from "react-router-dom";
+import "../App.css";
+import { FaThumbsUp, FaDownload, FaBookmark } from "react-icons/fa";
 
 function ImageDetailPage({ images }) {
   const { id } = useParams();
@@ -14,17 +14,16 @@ function ImageDetailPage({ images }) {
   return (
     <div className="image-detail">
       <img src={image.urls.regular} alt={image.alt_description} />
-
       <div className="content">
         <div className="buttons-container">
           <button className="button">
             <FaThumbsUp />
           </button>
           <button className="button">
-            <FaBookmark /> 
+            <FaBookmark />
           </button>
           <button className="button">
-            <FaDownload /> 
+            <FaDownload />
           </button>
         </div>
         <h2>{image.alt_description}</h2>

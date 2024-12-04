@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import searchImages from "./api/api";
+import analyzeImage from "./api/visionApi";
 import SearchBar from "./components/searchBar";
-import ImageList from "./components/imageList";
+import ImageList from "./components/ImageList";
 import Pagination from "./components/Pagination";
 import ImageDetailPage from "./components/ImageDetails";
-import './App.css';
+import "./App.css";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -16,33 +17,26 @@ function App() {
   const handleSearch = async (term) => {
     setSearchTerm(term);
     setCurrentPage(1);
-    const results = await searchImages(term, 1);
+    const results = await searchImages(term);
     setImages(results.images);
     setTotalPages(results.totalPages);
   };
 
-  const fetchPage = async (page) => {
-    const results = await searchImages(searchTerm, page);
-    setImages(results.images);
-    setCurrentPage(page);
-  };
-
-  const handlePageChange = (direction) => {
-    const newPage = direction === "next" ? currentPage + 1 : currentPage - 1;
-    if (newPage >= 1 && newPage <= totalPages) {
-      fetchPage(newPage);
+  const handleURLSearch = async (url) => {
+    const labels = await analyzeImage(url);
+    if (labels.length > 0) {
+      const results = await searchImages(labels[0]); 
+      setImages(results.images);
+      setTotalPages(results.totalPages);
     }
   };
 
   return (
     <Router>
       <div className="App">
-        <SearchBar onSearch={handleSearch} />
+        <SearchBar onSearch={handleSearch} onURLSubmit={handleURLSearch} />
         <Routes>
-          {/* Image Gallery */}
           <Route path="/" element={<ImageList images={images} />} />
-
-          {/* Image Detail Page */}
           <Route
             path="/image/:id"
             element={<ImageDetailPage images={images} />}
@@ -52,7 +46,11 @@ function App() {
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
-            onPageChange={handlePageChange}
+            onPageChange={(direction) =>
+              direction === "next"
+                ? handleSearch(searchTerm, currentPage + 1)
+                : handleSearch(searchTerm, currentPage - 1)
+            }
           />
         )}
       </div>
