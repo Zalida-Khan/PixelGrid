@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import searchImages from "./api/api";
+import {searchImages, searchUploadedImages} from "./api/api";
 import SearchBar from "./components/SearchBar";
 import ImageList from "./components/ImageList";
 import Pagination from "./components/Pagination";
@@ -13,50 +13,53 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+
   const handleSearch = async (term) => {
     setSearchTerm(term);
-    setCurrentPage(1);
+    setCurrentPage(1); //Rest pagination 
     const results = await searchImages(term, 1);
-    setImages(results.images);
-    setTotalPages(results.totalPages);
+    await updateResult(results);
   };
 
-  const handleImageUpload = (file) => {
-    console.log("Uploaded file:", file);
-
-    if (file.name === "cat.jpg") {
-      // Mock Response for `cat.jpg`
-      const mockImages = [
-        {
-          id: "mock1",
-          urls: {
-            small: "/cat1.jpg", 
-            regular: "/cat1.jpg",
-          },
-          alt_description: "A cute cat",
-          description: "This is a mock result for uploading cat.jpg",
-        },
-      ];
-
-      setImages(mockImages); // Set the mock images
-      setTotalPages(1); // Only one page of results
-      setSearchTerm("Uploaded: cat.jpg");
-    } else {
-      alert("No mock result available for this file.");
-    }
+  const handleImageUpload = async (file) => {
+    setCurrentPage(1); //Rest pagination 
+    // const reader = new FileReader();
+    // reader.onloadend = async () => {
+      // const base64Data = reader.result.split(",")[1];
+      const results = await searchUploadedImages(file, 1, 10, true, setSearchTerm);
+      await updateResult(results);
+    // };
+    reader.readAsDataURL(file);
   };
+  
+  const handleURLSubmit = async (url) => {
+    setSearchTerm(url);
+    setCurrentPage(1); //Rest pagination 
+    const results = await searchImages(url, 1, 10, true);
+    await updateResult(results);
+  }
 
-  const handlePageChange = (direction) => {
+  const handlePageChange = async (direction) => {
     const newPage = direction === "next" ? currentPage + 1 : currentPage - 1;
     if (newPage >= 1 && newPage <= totalPages) {
-      handleSearch(searchTerm, newPage);
+      const results = await searchImages(searchTerm, newPage, 10, true);
+      await updateResult(results);
+      setCurrentPage(newPage);
     }
   };
-
+  const updateResult = async (results) => {
+    setImages(results.images);
+    setTotalPages(results.totalPages);
+  }
+  
   return (
     <Router>
       <div className="App">
-        <SearchBar onSearch={handleSearch} onImageUpload={handleImageUpload} />
+        <SearchBar
+          onSearch={handleSearch}
+          onImageUpload={handleImageUpload}
+          onURLSubmit={handleURLSubmit}
+        />
         <Routes>
           <Route path="/" element={<ImageList images={images} />} />
           <Route path="/image/:id" element={<ImageDetailPage images={images} />} />
