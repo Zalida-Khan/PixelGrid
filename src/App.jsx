@@ -29,7 +29,7 @@ function App() {
       const results = await searchUploadedImages(file, 1, 10, true, setSearchTerm);
       await updateResult(results);
     // };
-    reader.readAsDataURL(file);
+    // reader.readAsDataURL(file);
   };
   
   const handleURLSubmit = async (url) => {
