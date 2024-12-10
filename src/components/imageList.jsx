@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './ImageList.css';
 
-function ImageList({ images }) {
+function ImageList ({ images }) {
   const renderedImages = images.map((image) => (
     <div key={image.id || image.link} className="image-item">
       <Link to={`/image/${image.id || image.link}`}>
