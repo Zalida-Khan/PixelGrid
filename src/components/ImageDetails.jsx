@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ImageDetails.css';
 import { FaThumbsUp, FaDownload, FaBookmark, FaArrowLeft } from 'react-icons/fa';
-import CommentSection from './CommentSection';
+import CommentSection from './CommentSection.jsx';
 
 function ImageDetailPage({ images }) {
   const { id } = useParams();

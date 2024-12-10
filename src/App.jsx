@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { searchImages, searchUploadedImages } from "./api/api";
-import SearchBar from "./components/SearchBar";
-import ImageList from "./components/ImageList";
-import Pagination from "./components/Pagination";
-import ImageDetailPage from "./components/ImageDetails";
-import NavBar from "./components/NavBar"; 
-import ProfilePage from './components/ProfilePage'; 
+import SearchBar from "./components/SearchBar.jsx";
+import ImageList from "./components/ImageList.jsx";
+import Pagination from "./components/Pagination.jsx";
+import ImageDetailPage from "./components/ImageDetails.jsx";
+import NavBar from "./components/NavBar.jsx";
+// import ProfilePage from './components/ProfilePage';
 import "./App.css";
 
 function App() {
@@ -61,7 +61,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar user={user} /> 
+        <NavBar user={user} />
 
         <SearchBar
           onSearch={handleSearch}

@@ -14,13 +14,10 @@ const GOOGLE_VISION_API_URL = `https://vision.googleapis.com/v1/images:annotate?
 
 const classifyImage = async (imageElement) => {
   try {
-    // Load the MobileNet model
     const model = await mobilenet.load();
 
-    // Classify the image
     const predictions = await model.classify(imageElement);
 
-    // Display predictions
     console.log("Predictions:", predictions);
     return predictions;
   } catch (error) {
@@ -43,13 +40,13 @@ export const searchUploadedImages = async (
     img.onload = async () => {
       try {
         const preds = await classifyImage(img);
-        resolve(preds); // Resolve the promise with predictions
+        resolve(preds);
       } catch (error) {
-        reject(error); // Reject the promise if there's an error
+        reject(error); 
       }
     };
 
-    img.onerror = (error) => reject(error); // Handle image loading errors
+    img.onerror = (error) => reject(error); 
   });
 
   console.log("Image classification results:", predictions);
@@ -58,19 +55,13 @@ export const searchUploadedImages = async (
     const topPrediction = predictions[0].className;
     console.log(`Searching for: ${topPrediction}`);
 
-    // Perform a search using the top prediction and wait for the result
     const result = await searchImages(topPrediction, page, perPage, useGoogle);
     setSearchTerm(topPrediction)
     console.log("Search results:", result);
     return result;
   }
-  // const query = await extractLabelsFromImage(base64Data);
-
-  // searchImages(query.data.text, page, perPage, useGoogle);
 };
 
-//perPage: valid value 1~10 inclusive
-//reference link: https://developers.google.com/custom-search/v1/reference/rest/v1/cse/list#num
 export const searchImages = async (
   term,
   page = 1,
@@ -79,16 +70,15 @@ export const searchImages = async (
 ) => {
   try {
     if (useGoogle) {
-      // Google Custom Search logic
       const startIndex = (page - 1) * perPage + 1;
       const response = await axios.get(GOOGLE_API_URL, {
         params: {
           key: GOOGLE_API_KEY,
           cx: GOOGLE_CX,
           q: term,
-          num: perPage, // Fetch perPage images from Google Custom Search
+          num: perPage, 
           start: startIndex,
-          searchType: "image", // Ensure we are searching for images
+          searchType: "image",
         },
       });
       return {
@@ -98,7 +88,6 @@ export const searchImages = async (
         ),
       };
     } else {
-      // Unsplash API logic
       const response = await axios.get(UNSPLASH_API_URL, {
         headers: {
           Authorization: `Client-ID ${API_KEY}`,
