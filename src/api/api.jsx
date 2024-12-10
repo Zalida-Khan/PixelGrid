@@ -79,25 +79,26 @@ export const searchImages = async (
 ) => {
   try {
     if (useGoogle) {
+      // Google Custom Search logic
       const startIndex = (page - 1) * perPage + 1;
       const response = await axios.get(GOOGLE_API_URL, {
         params: {
           key: GOOGLE_API_KEY,
           cx: GOOGLE_CX,
           q: term,
-          num: 10,
+          num: perPage, // Fetch perPage images from Google Custom Search
           start: startIndex,
-          searchType: "image",
+          searchType: "image", // Ensure we are searching for images
         },
       });
       return {
         images: response.data.items || [],
         totalPages: Math.ceil(
-          parseInt(response.data.searchInformation.totalResults || 0, 10) /
-            perPage
+          parseInt(response.data.searchInformation.totalResults || 0, 10) / perPage
         ),
       };
     } else {
+      // Unsplash API logic
       const response = await axios.get(UNSPLASH_API_URL, {
         headers: {
           Authorization: `Client-ID ${API_KEY}`,

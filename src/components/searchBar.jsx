@@ -5,6 +5,7 @@ function SearchBar({ onSearch, onImageUpload, onURLSubmit }) {
   const [term, setTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageURL, setImageURL] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const uploadButtonRef = useRef();
   const fileInputRef = useRef();
   const [modalPosition, setModalPosition] = useState({ top: 0, left: 0 });
@@ -24,17 +25,21 @@ function SearchBar({ onSearch, onImageUpload, onURLSubmit }) {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      onImageUpload(file);
+      setIsLoading(true); 
+      await onImageUpload(file);
+      setIsLoading(false); 
       setIsModalOpen(false);
     }
   };
 
-  const handleURLSubmit = () => {
+  const handleURLSubmit = async () => {
     if (imageURL.trim()) {
-      onURLSubmit(imageURL.trim());
+      setIsLoading(true); 
+      await onURLSubmit(imageURL.trim());
+      setIsLoading(false); 
       setImageURL("");
       setIsModalOpen(false);
     }
@@ -100,10 +105,11 @@ function SearchBar({ onSearch, onImageUpload, onURLSubmit }) {
                 onChange={(e) => setImageURL(e.target.value)}
                 className="url-input-field"
               />
-              <button onClick={handleURLSubmit} className="url-submit-button">
+              <button onClick={handleURLSubmit} className="url-submit-button" disabled={isLoading}>
                 Submit
               </button>
             </div>
+            {isLoading && <div className="loading-indicator">Loading...</div>}
           </div>
         </div>
       )}

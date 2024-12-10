@@ -1,0 +1,152 @@
+.nav-cont {
+    display: flex;
+    align-items: center;
+    padding: 2.5em 2em;
+    gap: 50px;
+    border-radius: 50px;
+    background: rgb(125, 33, 75, 0.4);
+    color: #000000;
+    height: 50px;
+    z-index: 1000;
+    position: fixed;
+    right: 20px;
+    justify-content: space-between;
+}
+
+.nav-logo {
+    width: 25px;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-menu.active {
+    display: flex;
+    padding-top: 70px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile-pic-nav {
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.profile-dropdown {
+    display: none;
+    position: absolute;
+    top: 65px;
+
+    right: 2px;
+    background: rgb(125, 33, 75, 0.8);
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+    gap: 15px;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+/* Dropdown items */
+.profile-dropdown .dropdown-link {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 15px;
+    transition: background 0.3s ease;
+}
+
+.profile-dropdown .dropdown-link:hover {
+    background-color: rgba(235, 142, 181, 0.211);
+}
+
+.profile-dropdown.active {
+    display: flex;
+}
+
+@media (max-width: 1024px) {
+    .nav-cont {
+        padding: 2.5em 2em;
+        gap: 50px;
+    }
+
+    .nav-logo {
+        width: 25px;
+    }
+
+    .profile-pic-nav {
+        width: 50px;
+        border-radius: 50%;
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: rgb(125, 33, 75, 0.4);
+        border-radius: 50px;
+        padding: 6px;
+        gap: 10px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-cont {
+        padding: 2em 1em;
+    }
+
+    .profile-dropdown .dropdown-link:hover {
+        display: none;
+    }
+
+    .profile-dropdown.active {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: rgb(125, 33, 75, 0.4);
+        border-radius: 50px;
+        padding: 6px;
+        gap: 10px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-cont {
+        padding: 2em 1em;
+    }
+
+    .profile-dropdown .dropdown-link:hover {
+        display: none;
+    }
+
+    .profile-dropdown.active {
+        display: none;
+    }
+}
