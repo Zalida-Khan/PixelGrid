@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import "../App.css";
 
-function SearchBar({ onSearch, onImageUpload, onURLSubmit }) {
+function SearchBar ({ onSearch, onImageUpload, onURLSubmit }) {
   const [term, setTerm] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageURL, setImageURL] = useState("");
