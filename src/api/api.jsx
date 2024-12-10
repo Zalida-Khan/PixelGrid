@@ -12,47 +12,6 @@ const GOOGLE_CX = import.meta.env.VITE_GOOGLE_CX;
 
 const GOOGLE_VISION_API_URL = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_API_KEY}`;
 
-// const extractLabelsFromImage = async (base64Image) => {
-//   try {
-//     const response = await axios.post(GOOGLE_VISION_API_URL, {
-//       requests: [
-//         {
-//           image: {
-//             content: base64Image,
-//           },
-//           features: [
-//             {
-//               type: "LABEL_DETECTION",
-//               maxResults: 5,
-//             },
-//           ],
-//         },
-//       ],
-//     });
-
-//     const labels = response.data.responses[0].labelAnnotations.map(
-//       (label) => label.description
-//     );
-
-//     return labels.join(" ");
-//   } catch (error) {
-//     console.error("Error extracting labels:", error.response?.data || error.message);
-//     throw error;
-//   }
-// };
-
-// const extractLabelsFromImage = async (base64Image) => {
-//   try {
-//     return await Tesseract.recognize(base64Image, "eng");
-//   } catch (error) {
-//     console.error(
-//       "Error extracting labels:",
-//       error.response?.data || error.message
-//     );
-//     throw error;
-//   }
-// };
-
 const classifyImage = async (imageElement) => {
   try {
     // Load the MobileNet model
