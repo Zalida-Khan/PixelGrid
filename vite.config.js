@@ -1,20 +1,20 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-// vite.config.js or rollup.config.js
-export default {
+export default defineConfig({
+  plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 1000
-,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('@tensorflow/tfjs') || id.includes('@tensorflow-models/mobilenet')) {
-            return 'tensorflow'; 
+            return 'tensorflow';
           }
         }
       }
     }
   }
-};
+});
+
