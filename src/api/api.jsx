@@ -1,5 +1,8 @@
 import axios from "axios";
+import Tesseract from "tesseract.js";
 import * as mobilenet from "@tensorflow-models/mobilenet";
+import * as tf from "@tensorflow/tfjs";
+
 
 const UNSPLASH_API_URL = "https://api.unsplash.com/search/photos";
 const GOOGLE_API_URL = "https://www.googleapis.com/customsearch/v1";
