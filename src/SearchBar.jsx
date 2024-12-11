@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import "../App.css";
+import "./App.css";
 
 function SearchBar ({ onSearch, onImageUpload, onURLSubmit }) {
   const [term, setTerm] = useState("");
