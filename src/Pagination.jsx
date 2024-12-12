@@ -1,5 +1,4 @@
 import React from "react";
-import './ImageList.css';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   return (

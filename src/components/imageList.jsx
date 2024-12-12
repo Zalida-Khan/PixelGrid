@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './ImageList.css';
+import "./ImageList.css";
 
 function ImageList ({ images }) {
   const renderedImages = images.map((image) => (
