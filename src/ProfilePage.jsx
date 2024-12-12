@@ -1,62 +1,98 @@
-// import React, { useState } from 'react';
-// import './ProfilePage.css';
+import React, { useState } from "react";
+import "./ProfilePage.css";
 
-// const ProfilePage = () => {
-//   const [isEditing, setIsEditing] = useState(false);
+const ProfilePage = () => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [aboutMe, setAboutMe] = useState("This is a placeholder About Me section.");
+  const [contactInfo, setContactInfo] = useState({
+    phone: "(123) 456-7890",
+    address: "123 Main Street, City, Country",
+  });
 
-//   const handleEditClick = () => {
-//     setIsEditing(!isEditing);
-//   };
+  const handleEditToggle = () => {
+    setIsEditing(!isEditing);
+  };
 
-//   return (
-//     <div>
-//       <nav className="nav-cont">
-//         <img src="logo.png" alt="Logo" className="nav-logo" />
-//         <div className="hamburger">
-//           <span>&#9776;</span>
-//         </div>
-//         <div className="nav-menu">
-//           <a href="#" className="dropdown-link">Home</a>
-//           <a href="#" className="dropdown-link">Settings</a>
-//           <a href="#" className="dropdown-link">Log Out</a>
-//         </div>
-//         <img src="profile-pic.jpg" alt="Profile Pic" className="profile-pic-nav" />
-//       </nav>
+  return (
+    <div className="profile-page">
+      <div className="profile-header">
+        <img
+          src="profile-pic.jpg"
+          alt="Profile"
+          className="profile-image"
+        />
+        <div className="user-info">
+          <h1>John Doe</h1>
+          <p>Web Developer</p>
+          <p>
+            <a href="mailto:johndoe@example.com" className="email-link">
+              johndoe@example.com
+            </a>
+          </p>
+        </div>
+      </div>
 
-//       <div className="profile-page">
-//         <div className="profile-header">
-//           <img src="profile-pic.jpg" alt="Profile" className="profile-image" />
-//           <div className="user-info">
-//             <h1>John Doe</h1>
-//             <p>Web Developer</p>
-//             <p><a href="mailto:john.doe@example.com">john.doe@example.com</a></p>
-//           </div>
-//           <button className="edit-profile" onClick={handleEditClick}>
-//             {isEditing ? 'Save Changes' : 'Edit Profile'}
-//           </button>
-//         </div>
+      <div className="profile-grid">
+    
+        <div className="card">
+          <h2>About Me</h2>
+          {isEditing ? (
+            <textarea
+              className="about-me-input"
+              value={aboutMe}
+              onChange={(e) => setAboutMe(e.target.value)}
+            ></textarea>
+          ) : (
+            <p>{aboutMe}</p>
+          )}
+          <button className="edit-button" onClick={handleEditToggle}>
+            {isEditing ? "Save Changes" : "Edit"}
+          </button>
+        </div>
 
-//         <div className="profile-details">
-//           <h2>About Me</h2>
-//           {isEditing ? (
-//             <textarea placeholder="Tell us about yourself..."></textarea>
-//           ) : (
-//             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque imperdiet purus et bibendum sollicitudin.</p>
-//           )}
+      
+        <div className="card">
+          <h2>Contact Info</h2>
+          {isEditing ? (
+            <>
+              <label>
+                Phone:
+                <input
+                  type="text"
+                  value={contactInfo.phone}
+                  onChange={(e) =>
+                    setContactInfo({ ...contactInfo, phone: e.target.value })
+                  }
+                />
+              </label>
+              <label>
+                Address:
+                <input
+                  type="text"
+                  value={contactInfo.address}
+                  onChange={(e) =>
+                    setContactInfo({ ...contactInfo, address: e.target.value })
+                  }
+                />
+              </label>
+            </>
+          ) : (
+            <>
+              <p>Phone: {contactInfo.phone}</p>
+              <p>Address: {contactInfo.address}</p>
+            </>
+          )}
+        </div>
 
-//           <h2>Contact Info</h2>
-//           <p>Phone: (123) 456-7890</p>
-//           <p>Address: 123 Main Street, City, Country</p>
-//         </div>
+ 
+        <div className="card">
+          <h2>Account Settings</h2>
+          <button className="settings-button">Change Password</button>
+          <button className="settings-button deactivate">Deactivate Account</button>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-//         <div className="settings">
-//           <h2>Account Settings</h2>
-//           <button className="change-password">Change Password</button>
-//           <button className="deactivate-account">Deactivate Account</button>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfilePage;
+export default ProfilePage;

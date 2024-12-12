@@ -1,0 +1,145 @@
+:root {
+    --primary-color: #F8D7DA;
+    --secondary-color: #C8A2C8;
+    --accent-color: #bfa59b;
+    --highlight-color: #E6DFF1;
+    --background-color: #FBF8F5;
+    --border-color: #480523;
+    --text-color: #2e2a22;
+    --hover-background: #7d214b;
+  }
+  
+
+  .profile-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+  }
+  
+
+  .profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  
+  .profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--border-color);
+    margin-bottom: 15px;
+    background-color: var(--highlight-color);
+  }
+  
+  .user-info {
+    text-align: center;
+  }
+  
+  .user-info h1 {
+    font-size: 24px;
+    margin: 0;
+    color: var(--text-color);
+  }
+  
+  .user-info p {
+    font-size: 14px;
+    color: var(--text-color);
+    margin: 5px 0;
+  }
+  
+  .email-link {
+    text-decoration: none;
+    color: var(--border-color);
+  }
+  
+  .email-link:hover {
+    text-decoration: underline;
+  }
+  
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+
+  .card {
+    background-color: var(--highlight-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    border: 1px solid var(--border-color);
+  }
+  
+  .card h2 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: var(--border-color);
+  }
+  
+  .card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-color);
+  }
+  
+  .card textarea,
+  .card input {
+    width: 100%;
+    border: 1px solid var(--accent-color);
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .card button {
+    align-self: flex-start;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .card button:hover {
+    background-color: var(--hover-background);
+    color: #fff;
+  }
+  
+
+  .settings-button {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  .settings-button.deactivate {
+    background-color: var(--border-color);
+    color: #fff;
+  }
+  
+  .settings-button:hover {
+    background-color: var(--hover-background);
+  }
