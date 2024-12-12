@@ -2,11 +2,11 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { searchImages, searchUploadedImages } from "./api/api.jsx";
 import SearchBar from "./SearchBar.jsx";
-import ImageList from "./imageList.jsx";
+import ImageList from "./ImageList.jsx";
 import Pagination from "./Pagination.jsx";
 import ImageDetailPage from "./ImageDetails.jsx";
 import NavBar from "./NavBar.jsx";
-// import ProfilePage from './components/ProfilePage';
+import ProfilePage from "./ProfilePage.jsx";
 import "./App.css";
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     name: "John Doe",
     email: "johndoe@example.com",
     dob: "01/01/1990",
-    profilePic: "profile-pic.jpg"
+    profilePic: "profile-pic.jpg",
   };
 
   const handleSearch = async (term) => {
@@ -63,18 +63,31 @@ function App() {
       <div className="App">
         <NavBar user={user} />
 
-        <SearchBar
-          onSearch={handleSearch}
-          onImageUpload={handleImageUpload}
-          onURLSubmit={handleURLSubmit}
-        />
-
         <Routes>
-          <Route path="/" element={<ImageList images={images} />} />
+          {/* Home Page */}
+          <Route
+            path="/"
+            element={
+              <>
+                <SearchBar
+                  onSearch={handleSearch}
+                  onImageUpload={handleImageUpload}
+                  onURLSubmit={handleURLSubmit}
+                />
+                <ImageList images={images} />
+              </>
+            }
+          />
+
+          {/* Image Detail Page */}
           <Route path="/image/:id" element={<ImageDetailPage images={images} />} />
+
+          {/* Profile Page */}
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
 
-        {images.length > 0 && window.location.pathname === '/' && (
+        {/* Pagination shown only on the home page */}
+        {images.length > 0 && window.location.pathname === "/" && (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}
