@@ -2,7 +2,7 @@ import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { searchImages, searchUploadedImages } from "./api/api.jsx";
 import SearchBar from "./SearchBar.jsx";
-import ImageList from "./ImageList.jsx";
+import ImageList from "./components/imageList.jsx";
 import Pagination from "./Pagination.jsx";
 import ImageDetailPage from "./ImageDetails.jsx";
 import NavBar from "./NavBar.jsx";
